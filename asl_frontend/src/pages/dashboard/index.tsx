@@ -2,6 +2,7 @@
 import {Fragment, useState} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import QuizzesComponent from "../quizzes";
 
 const user = {
     name: 'Tom Cook',
@@ -20,7 +21,7 @@ export default function Dashboard() {
 
     const navigation = [
         { name: 'Dashboard', href: '#', current: false },
-        { name: 'Team', href: '#', current: true },
+        { name: 'Quizzes', href: '#', current: true },
         { name: 'Projects', href: '#', current: false },
         { name: 'Calendar', href: '#', current: false },
         { name: 'Reports', href: '#', current: false },
@@ -220,7 +221,12 @@ export default function Dashboard() {
                     <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
                         {/* Replace with your content */}
                         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-                            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+                            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" >
+                                {activeTab == "Quizzes" && (
+                                    <QuizzesComponent />
+                                )}
+
+                            </div>
                         </div>
                         {/* /End replace */}
                     </div>
