@@ -36,15 +36,11 @@ export default function Dashboard() {
     const [activeTab, setActiveTab] = useState("Dashboard");
 
     function setActive(activeTab: any) {
-        console.log(activeTab);
         const activeFind = navigation.find((obj) => {
-            console.log(obj);
             return obj.name === activeTab;
         });
-
-        console.log('active find', activeFind);
         setActiveTab(activeTab);
-        console.log(activeTab);
+
     }
 
 

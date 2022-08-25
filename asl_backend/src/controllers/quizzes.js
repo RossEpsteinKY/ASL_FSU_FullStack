@@ -11,10 +11,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
-router.get('/', isAuthenticated, async (req, res) => {
+// router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', async (req, res) => {
     // res.send('get quizzes');
     const quizzes = await Quizzes.findAll()
-    res.render('quiz/index',{quizzes});
+    // res.render('quiz/index',{quizzes});
+    res.json(quizzes);
 })
 
 router.get('/new', isAuthenticated, (req,res) => {
