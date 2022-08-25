@@ -40,8 +40,6 @@ export default function QuizzesComponent() {
 
     return (
         <>
-           <h1>Works!</h1>
-
                 {/*{quizzes.map((quiz) => (*/}
                 {/*    <h1>*/}
                 {/*        {quiz.name}*/}
