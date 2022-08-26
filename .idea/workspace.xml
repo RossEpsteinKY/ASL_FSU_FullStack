@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8efd5317-d769-4fdc-8ac2-5c34599b364e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ASL_Fullstack_Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asl_frontend/src/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/asl_frontend/src/pages/dashboard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asl_frontend/src/pages/quizzes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/asl_frontend/src/pages/quizzes/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +69,7 @@
       <workItem from="1661477985980" duration="15000" />
       <workItem from="1661478009821" duration="3000" />
       <workItem from="1661522557671" duration="863000" />
-      <workItem from="1661524064215" duration="692000" />
+      <workItem from="1661524064215" duration="2291000" />
     </task>
     <servers />
   </component>

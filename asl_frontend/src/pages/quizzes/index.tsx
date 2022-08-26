@@ -43,7 +43,7 @@ export default function QuizzesComponent() {
     return (
         <>
 
-
+            {!quizSelected && (
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-kringle-sidebarbg">
                 <tr>
@@ -111,7 +111,12 @@ export default function QuizzesComponent() {
                             </tr>
                         ))}
                 </tbody>
-            </table>
+            </table>)
+            }
+
+            {quizSelected && (<h1>seapsidjf</h1>
+            )
+            }
         </>
     )
 }
