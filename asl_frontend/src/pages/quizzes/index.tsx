@@ -23,6 +23,17 @@ export default function QuizzesComponent() {
 
     const [quizSelected, setQuizSelected] = useState(false);
 
+    const [activeQuiz, setActiveQuiz] = useState({
+            name:''
+    });
+
+    function quizInitialize(quiz: any) {
+        setActiveQuiz(quiz);
+        setQuizSelected(true);
+
+
+    }
+
 
 
     async function getQuizzes() {
@@ -98,7 +109,7 @@ export default function QuizzesComponent() {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
 
-                                    <a href="http://www.facebook.com">{quiz.name}</a>
+                                    <a onClick={() => quizInitialize(quiz)}>{quiz.name}</a>
                                 </td>
 
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -114,8 +125,11 @@ export default function QuizzesComponent() {
             </table>)
             }
 
-            {quizSelected && (<h1>seapsidjf</h1>
-            )
+            {quizSelected && (
+
+                    <h1>{activeQuiz.name}</h1>
+
+                )
             }
         </>
     )
