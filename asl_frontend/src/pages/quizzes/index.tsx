@@ -21,6 +21,8 @@ export default function QuizzesComponent() {
         weight: ''
     }]);
 
+    const [quizSelected, setQuizSelected] = useState(false);
+
 
 
     async function getQuizzes() {
@@ -40,12 +42,8 @@ export default function QuizzesComponent() {
 
     return (
         <>
-                {/*{quizzes.map((quiz) => (*/}
-                {/*    <h1>*/}
-                {/*        {quiz.name}*/}
-                {/*        {fires}*/}
-                {/*    </h1>*/}
-                {/*))}*/}
+
+
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-kringle-sidebarbg">
                 <tr>
@@ -91,6 +89,7 @@ export default function QuizzesComponent() {
                             </tr>
                         ) :
                         quizzes?.map((quiz:any) => (
+
                             <tr key={quiz.id}
                                 className={quiz.id % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
 
@@ -99,7 +98,7 @@ export default function QuizzesComponent() {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
 
-                                    {quiz.name}
+                                    <a href="http://www.facebook.com">{quiz.name}</a>
                                 </td>
 
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
