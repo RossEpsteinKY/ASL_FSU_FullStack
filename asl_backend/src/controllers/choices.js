@@ -12,11 +12,13 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 
-router.get('/', isAuthenticated,async (req, res) => {
+router.get('/',async (req, res) => {
     // res.send('get choices');
     const choices = await Choices.findAll()
 
-    res.render('choices/index',{choices});
+    // res.render('choices/index',{choices});
+
+    res.json(choices);
 })
 
 router.get('/new', isAuthenticated, async (req,res) => {
