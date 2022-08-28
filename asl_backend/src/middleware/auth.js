@@ -4,7 +4,10 @@ const isAuthenticated = async (request,response,next) => {
         next();
         return;
     }
-    response.redirect('/auth/login');
+    else{
+        // response.redirect('/auth/login')
+        return false;
+    };
 }
 
 module.exports = {
