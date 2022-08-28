@@ -3,7 +3,8 @@ const router = express.Router();
 const {request, response} = require("express");
 const {param} = require("express/lib/router");
 const bodyParser = require('body-parser');
-const session = require('express-session');
+// const session = require('express-session');
+const session = require('cookie-session');
 const app = express();
 require('dotenv').config();
 
@@ -11,17 +12,36 @@ const quizzesController = require('./src/controllers/quizzes');
 const questionController = require('./src/controllers/questions');
 const choicesController = require('./src/controllers/choices');
 const authController = require('./src/controllers/auth');
+const limiter = require('express-rate-limit')
 const { isAuthenticated } = require("./src/middleware/auth");
+const helmet = require('helmet');
+const hpp = require('hpp');
+const csurf = require('csurf');
 
 
 
-app.use(session({
-    saveUninitialized: false,
-    secret: "T3s7!ng",
-    cookie: {
-        maxAge: 6000000,
-    }
-}))
+app.use(
+    session({
+        saveUninitialized: false,
+        name: 'session',
+        secret: 'T3s7!ng',
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hour expiration token
+    })
+);
+app.use(helmet());
+app.use(hpp());
+app.use(csurf());
+app.use(limiter);
+
+
+// app.use(session({
+//     saveUninitialized: false,
+//     secret: "T3s7!ng",
+//     cookie: {
+//         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+//         // maxAge: 6000000,
+//     }
+// }))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('views',__dirname + '/src/views');
