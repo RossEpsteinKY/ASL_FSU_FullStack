@@ -28,20 +28,6 @@ app.use(
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hour expiration token
     })
 );
-app.use(helmet());
-app.use(hpp());
-app.use(csurf());
-app.use(limiter);
-
-
-// app.use(session({
-//     saveUninitialized: false,
-//     secret: "T3s7!ng",
-//     cookie: {
-//         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-//         // maxAge: 6000000,
-//     }
-// }))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('views',__dirname + '/src/views');

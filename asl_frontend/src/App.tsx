@@ -1,15 +1,78 @@
 import React from 'react';
-import {Fragment, useState} from 'react'
+import {Fragment, useState, useEffect,} from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from "./pages/dashboard";
 import LoginGithub from 'react-login-github';
+import axios from 'axios';
+import { useQuery } from "react-query";
 
 
-function App() {
+
+export default function App() {
+
+    useEffect(() => {
+
+    const windowUrl = window.location.search;
+
+        let params = new URLSearchParams(windowUrl);
+        console.log(params.getAll('code'))
+
+        const code = params.getAll('code');
+        if(code !== null){
+            console.log('LOG THEM IN');
+            logThemIn(code);
+            return;
+        }
+
+
+
+    },[])
+
 // const onSuccess = response => console.log(response);
 // const onFailure = response => console.error(response);
+
+function onSuccess(res: any){
+    console.log(res);
+
+}
+
+
+async function logThemIn(code: any){
+    console.log('iauhsdf')
+
+  const params = {
+      code: code,
+
+    };
+
+    console.log(params)
+
+   const loginRequest = await axios
+        .post(`http://localhost:5000/auth/callback?code=${code}`)
+        .then((res) => {
+        console.log('blah',res.data);
+
+    });
+
+    console.log('test',loginRequest);
+
+
+
+
+//    let loginRequest = await axios
+//         .get("http://localhost:5000/getToken")
+//         .then((res) => {
+//         console.log('blah',res.data);
+// //         setQuestions(res.data);
+//         return;
+//     })
+
+ }
+
+
     const [auth, setAuth] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
   return (
     <div className="App">
         {auth === null && (
@@ -40,7 +103,11 @@ function App() {
                       href="#"
                       className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-10"
                     >
-                      <LoginGithub clientId="e8bb249dc2d40509c3ab" />
+                        <a href="https://github.com/login/oauth/authorize?client_id=e8bb249dc2d40509c3ab"
+                              className="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700"
+                            >
+                              Sign In To GitHub
+                        </a>
                     </a>
                   </div>
                 </div>
@@ -49,8 +116,7 @@ function App() {
           </div>
         </div></main>
 //       <LoginGithub clientId="e8bb249dc2d40509c3ab"
-// //          onSuccess={onSuccess}
-// //          onFailure={onFailure}
+//
 //        />
         )}
         {auth && (
@@ -63,4 +129,4 @@ function App() {
   );
 }
 
-export default App;
+
