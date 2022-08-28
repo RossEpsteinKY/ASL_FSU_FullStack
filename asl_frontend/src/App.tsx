@@ -19,63 +19,39 @@ export default function App() {
         console.log(params.getAll('code'))
 
         const code = params.getAll('code');
-        if(code !== null){
+        if(code !== null && code[0]?.length >5){
             console.log('LOG THEM IN');
             logThemIn(code);
             return;
         }
-
-
-
     },[])
 
-// const onSuccess = response => console.log(response);
-// const onFailure = response => console.error(response);
-
-function onSuccess(res: any){
-    console.log(res);
-
-}
-
-
 async function logThemIn(code: any){
-    console.log('iauhsdf')
-
-  const params = {
-      code: code,
-
-    };
-
-    console.log(params)
-
-   const loginRequest = await axios
-        .post(`http://localhost:5000/auth/callback?code=${code}`)
-        .then((res) => {
-        console.log('blah',res.data);
-
-    });
-
-    console.log('test',loginRequest);
-
-
-
-
-//    let loginRequest = await axios
-//         .get("http://localhost:5000/getToken")
+        setAuth('yes');
+//     console.log('iauhsdf')
+//
+//   const params = {
+//       code: code,
+//     };
+//
+//     console.log(params)
+//
+//    const loginRequest = await axios
+//         .post(`http://localhost:5000/auth/callback?code=${code}`)
 //         .then((res) => {
 //         console.log('blah',res.data);
-// //         setQuestions(res.data);
-//         return;
-//     })
-
+//
+//     });
+//     setAuth("true");
+//     console.log('test',loginRequest);
  }
 
 
-    const [auth, setAuth] = useState(null);
+    const [auth, setAuth] = useState("none");
     const [isLoading, setIsLoading] = useState(true);
   return (
     <div className="App">
-        {auth === null && (
+        {auth === "none" && (
 <main>
         {/* Hero section */}
         <div className="relative">
@@ -119,7 +95,7 @@ async function logThemIn(code: any){
 //
 //        />
         )}
-        {auth && (
+        {auth !== "none" && (
             <Dashboard />
         )}
 
